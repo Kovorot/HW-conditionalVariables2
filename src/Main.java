@@ -70,20 +70,10 @@ public class Main {
      */
     private static void isLeapYear(int year) {
 
-        if (year % 4 == 0) {
-
-            if (year % 100 == 0) {
-
-                if (year % 400 == 0) {
-                    System.out.println(year + " год - високосный год");
-                } else {
-                    System.out.println(year + " год невисокосный год");
-                }
-            } else {
-                System.out.println(year + " год - високосный год");
-            }
+        if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+            System.out.println(year + " год - високосный год");
         } else {
-            System.out.println(year + " год невисокосный год");
+            System.out.println(year + " год - невисокосный год");
         }
     }
 
@@ -94,20 +84,14 @@ public class Main {
      */
     private static void defineAppVersion(int operationSystem, int deviceYear) {
 
-        if (operationSystem == 0) {
-
-            if (deviceYear < 2015) {
-                System.out.println("Установите облегченную версию приложения для IOS по ссылке");
-            } else {
-                System.out.println("Установите версию приложения для IOS по ссылке");
-            }
-        } else if (operationSystem == 1) {
-
-            if (deviceYear < 2015) {
-                System.out.println("Установите облегченную версию приложения для Android по ссылке");
-            } else {
-                System.out.println("Установите версию приложения для Android по ссылке");
-            }
+        if (operationSystem == 0 && deviceYear < 2015) {
+            System.out.println("Установите облегченную версию приложения для IOS по ссылке");
+        } else if (operationSystem == 0 && deviceYear >= 2015) {
+            System.out.println("Установите версию приложения для IOS по ссылке");
+        } else if (operationSystem == 1 && deviceYear < 2015) {
+            System.out.println("Установите облегченную версию приложения для Android по ссылке");
+        } else if (operationSystem == 1 && deviceYear >= 2015) {
+            System.out.println("Установите версию приложения для Android по ссылке");
         } else {
             System.out.println("К сожалению, приложение не поддерживает вашу операционную систему");
         }
